@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ben Blair
+ * Ben Blair April 5, 2024
  * Used OpenAI ChatGPT
  */
 public class TileManagerTest {
@@ -24,6 +24,9 @@ public class TileManagerTest {
         assertTrue(tileList.isEmpty(), "The constructor should initialize an empty list");
     }
 
+    /**
+     * Verifies that tiles are added to the end of the list and are stored in the order they were added.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void addTest() { //Example test provided by instructor (uncomment below after you implement addTile method)
@@ -45,7 +48,7 @@ public class TileManagerTest {
     }
 
     /**
-     * Add comments
+     * Checks if the raise operation correctly moves the specified tile to the top of the list.
      */
     @Test
     @Timeout(value = 5, unit = SECONDS)
@@ -67,9 +70,8 @@ public class TileManagerTest {
         assertEquals(bottomTile, tileList.get(tileList.size() - 1), "Bottom tile should be moved to top after raise");
     }
 
-
     /**
-     * Add comments
+     * Tests that the delete operation removes the correct tile based on given coordinates.
      */
     @Test
     @Timeout(value = 5, unit = SECONDS)
@@ -87,6 +89,9 @@ public class TileManagerTest {
         assertTrue(tileList.contains(tile1), "Tile1 should remain in the list");
     }
 
+    /**
+     * Verifies that the deleteAll operation removes all tiles that overlap the given coordinates.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void deleteAllTest() {
@@ -104,6 +109,9 @@ public class TileManagerTest {
         assertTrue(tileList.isEmpty(), "All tiles overlapping at (35, 35) should be deleted");
     }
 
+    /**
+     * Ensures that the lower operation correctly moves the specified tile to the bottom of the list.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void lowerTest() {
@@ -124,6 +132,9 @@ public class TileManagerTest {
         assertEquals(tile2, tileList.get(2), "Tile2 should now be at the top of the list");
     }
 
+    /**
+     * Tests the shuffle operation to ensure it randomizes both the order and positions of tiles within bounds.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void shuffleTest() {
@@ -147,6 +158,9 @@ public class TileManagerTest {
         assertNotEquals(originalTiles, shuffledTiles, "The order of tiles should be different after shuffle");
     }
 
+    /**
+     * Combines multiple operations to test their interactions and effects on the tile list's state.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void combinedOperationsTest() {
@@ -186,6 +200,9 @@ public class TileManagerTest {
         }
     }
 
+    /**
+     * Verifies that operations targeting coordinates with no tiles do not alter the tile list.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void nonIntersectingCoordinatesOperationsTest() {
@@ -211,6 +228,9 @@ public class TileManagerTest {
         assertEquals(expectedTiles, actualTiles, "Tile list and order should remain unchanged after operations on non-intersecting coordinates");
     }
 
+    /**
+     * Tests the accuracy of getTiles after various manipulations, ensuring the state reflects changes.
+     */
     @Test
     @Timeout(value = 5, unit = SECONDS)
     public void getTilesAfterManipulationsTest() {
